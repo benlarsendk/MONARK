@@ -23,7 +23,13 @@ namespace MONARK
             foreach (var number in Recievers)
             {
                 string urlToApi = "...";
-                // Some nice shit
+                HttpRequest HTTP = new HttpRequest();
+                string ret = HTTP.GrabData(urlToApi);
+
+                if (ret != "0")
+                {
+                    // Return error
+                }
             }
             return true;
         }

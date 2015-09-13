@@ -19,7 +19,13 @@ namespace MONARK
             else
             {
                 UrlToApi = "...."; // Not implemented
-                // Do stuff with API
+                HttpRequest HTTP = new HttpRequest();
+                string ret = HTTP.GrabData(UrlToApi);
+
+                if (ret != "0")
+                {
+                    // Return error
+                }
                 return true;
             }
         }
