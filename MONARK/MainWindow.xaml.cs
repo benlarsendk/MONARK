@@ -105,37 +105,27 @@ namespace MONARK
 
         private void Send_Click(object sender, RoutedEventArgs e)
         {
-            if (CsvLoaded)
+            ISend send;
+
+            if (CsvLoaded && csvLocation != null)
             {
-                if (csvLocation != null)
-                {
-                    var MS = new MultiSend(api);
-                    if (MS.Send(SenBox.Text, MsgBox.Text))
-                    {
-                        MessageBox.Show("Success!");
-                        MsgBox.Text = "Message...";
-                        RecBox.Text = "Reciever...";
-                        SenBox.Text = "Sender...";
-                        csvLocation = "";
-                        RecBox.Text = "CSV Not loaded";
-                        RecBox.Background = Brushes.White;
-                        RecBox.IsReadOnly = false;
-                        CsvLoaded = false;
-                    }
-                }
+                send = new MultiSend(api);
             }
             else
             {
-                // R S M
-                var SS = new SingleSend(api);
-                if (SS.Send(RecBox.Text, SenBox.Text, MsgBox.Text))
-                {
-                    MessageBox.Show("Success!");
-                    MsgBox.Text = "Message...";
-                    RecBox.Text = "Reciever...";
-                    SenBox.Text = "Sender...";
-                }
+                send = new SingleSend(api);
             }
+
+            send.Send(RecBox.Text, SenBox.Text, MsgBox.Text);
+
+            RecBox.Text = "Receiver...";
+            SenBox.Text = "Sender...";
+            MsgBox.Text = "Message...";
+            csvLocation = "";
+            RecBox.Text = "CSV Not loaded";
+            RecBox.Background = Brushes.White;
+            RecBox.IsReadOnly = false;
+            CsvLoaded = false;
         }
 
         private void isDidgit(object sender, System.Windows.Input.TextCompositionEventArgs e)

@@ -4,32 +4,33 @@ using System.Windows;
 
 namespace MONARK
 {
-    internal class MultiSend
+    internal class MultiSend : ISend
     {
-        private readonly string api;
-        private readonly List<string> Recievers;
+        private string[] receivers;
+        private IAPI api;
 
-        public MultiSend(string resCsv, string apikey)
+        public MultiSend(IAPI api)
         {
-            api = apikey;
-            Recievers = new List<string>();
-            ReadCsvList(resCsv);
+            receivers = new List<string>();
+            this.api = api;
         }
 
-        public bool Send(string sender, string msg)
+        public bool Send(string receiverListLocation, string sender, string msg)
         {
-            foreach (var number in Recievers)
+            receivers = receiver.Split(';');
+
+            foreach (var person in receivers)
             {
-                var urlToApi = "http://www.smsit.dk/api/sendSms.php?apiKey=" + api + "&charset=UTF-8&senderId=" + sender +
-                               "&mobile=45" + number + "&message=" + msg;
-                var HTTP = new HttpRequest();
-                string ret = HTTP.GrabData(urlToApi);
+                var apiUrl = api.GenerateUrl(person, sender, msg);
+                var http = new HttpRequest();
+                string ret = http.GrabData(apiUrl);
 
                 if (ret != "0")
                 {
                     MessageBox.Show("Server returned: " + ret);
                 }
             }
+
             return true;
         }
 
@@ -49,18 +50,6 @@ namespace MONARK
                 }
             }
             return Recievers;
-        }
-
-        private bool IsDigitsOnly(string str)
-
-        {
-            foreach (var c in str)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-
-            return true;
         }
     }
 }
