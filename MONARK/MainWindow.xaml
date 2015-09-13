@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MONARK"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Mortadas NoobAss Reklame Kaster" Height="350" Width="336.538">
+    <Grid Background="White">
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="517">
+            <MenuItem Header="_File">
+                <MenuItem Header ="Load CSV"></MenuItem>
+                <MenuItem Header ="Exit"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <TextBox x:Name="MsgBox" HorizontalAlignment="Left" Height="120" Margin="48,116,0,0" TextWrapping="Wrap" Text="Message..." VerticalAlignment="Top" Width="244" GotFocus="MsgGotFocus"/>
+        <TextBox x:Name="RecBox" HorizontalAlignment="Left" Height="23" Margin="48,88,0,0" TextWrapping="Wrap" Text="Reciever..." VerticalAlignment="Top" Width="174" GotFocus="RetGotFocus"/>
+        <TextBox x:Name="SenBox" HorizontalAlignment="Left" Height="23" Margin="48,60,0,0" TextWrapping="Wrap" Text="Sender..." VerticalAlignment="Top" Width="174" GotFocus="gotFocus"/>
+        <Button x:Name="Load" Content="Multi" HorizontalAlignment="Left" Margin="227,88,0,0" VerticalAlignment="Top" Height="23" Width="65" BorderBrush="#FFDADADA" Background="WhiteSmoke" Click="Load_Click"/>
+        <Button x:Name="Send" Content="Send" HorizontalAlignment="Left" Margin="48,241,0,0" VerticalAlignment="Top" Width="82" BorderBrush="#FFDADADA" Background="WhiteSmoke"/>
+        <Label x:Name="CsvLoad" Content="" HorizontalAlignment="Left" Margin="48,266,0,0" VerticalAlignment="Top" Width="244" FontSize="8"/>
+
+
     </Grid>
 </Window>

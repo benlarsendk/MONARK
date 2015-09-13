@@ -24,5 +24,41 @@ namespace MONARK
         {
             InitializeComponent();
         }
+
+        private void gotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= gotFocus;
+        }
+
+        private void RetGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= RetGotFocus;
+        }
+
+        private void MsgGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= MsgGotFocus;
+        }
+
+        private void Load_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".csv";
+            dlg.Filter = "CSV Files (*.csv)|*.csv";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+                CsvLoad.Content = "CSV Loaded: " + filename;
+            }
+
+        }
     }
 }
