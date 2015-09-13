@@ -21,7 +21,7 @@
         <TextBox x:Name="MsgBox" MaxLength="918" AcceptsReturn="True" HorizontalAlignment="Left" Height="120" Margin="48,116,0,0" TextWrapping="Wrap" Text="Message..." VerticalAlignment="Top" Width="244" GotFocus="MsgGotFocus"/>
         <Button x:Name="Send" Content="Send" HorizontalAlignment="Left" Margin="48,241,0,0" VerticalAlignment="Top" Width="82" BorderBrush="#FFDADADA" Background="WhiteSmoke" Click="Send_Click"/>
         <Label x:Name="CsvLoad" Content="" HorizontalAlignment="Left" Margin="48,266,0,0" VerticalAlignment="Top" Width="244" FontSize="8"/>
-        <Label x:Name="API" Content="API not loaded." HorizontalAlignment="Left" Margin="48,261,0,0" VerticalAlignment="Top" Width="138"/>
+        <Label x:Name="API" Content="API not loaded." HorizontalAlignment="Left" Margin="143,240,0,0" VerticalAlignment="Top" Width="138"/>
 
 
     </Grid>
