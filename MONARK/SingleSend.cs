@@ -17,7 +17,7 @@ namespace MONARK
                        "&mobile=45" + reciever + "&message=" + msg;
             var HTTP = new HttpRequest();
 
-            var ret = HTTP.GrabData(UrlToApi);
+            string ret = HTTP.GrabData(UrlToApi);
 
             if (ret != "0")
             {
