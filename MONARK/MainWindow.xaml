@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MONARK"
         mc:Ignorable="d"
-        Title="Mortadas NoobAss Reklame Kaster" Height="350" Width="336.538">
+        Title="MONARK" Height="350" Width="336.538">
 
     <Grid Background="White">
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="517">
