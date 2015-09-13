@@ -12,7 +12,7 @@ namespace MONARK
     }
 
 
-    public class SMSIT : IAPI
+    public class SMSIT : IAPI   
     {
         private string APIKey;
 

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API.cs" />
     <Compile Include="HttpRequest.cs" />
     <Compile Include="Send\MultiSend.cs" />
     <Compile Include="Send\ISend.cs" />
