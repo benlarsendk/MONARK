@@ -9,36 +9,29 @@ namespace MONARK
     public interface IAPI
     {
         string GenerateUrl(string rec, string send, string msg);
+        string ApiKey { set; }
     }
 
 
-    public class SMSIT : IAPI   
+    public class SMSIT : IAPI
     {
-        private string APIKey;
+        public string ApiKey { set; private get; } = "";
 
-        public SMSIT(string API)
+        public string GenerateUrl(string receiver, string sender, string msg)
         {
-            APIKey = API;
+            return "http://www.smsit.dk/api/sendSms.php?apiKey=" + ApiKey + "&charset=UTF-8&senderId=" + sender +
+                       "&mobile=45" + receiver + "&message=" + msg;
         }
 
-        public string GenerateUrl(string rec, string send, string msg)
-        {
-            return "http://www.smsit.dk/api/sendSms.php?apiKey=" + APIKey + "&charset=UTF-8&senderId=" + send +
-                       "&mobile=45" + rec + "&message=" + msg;
-        }
+
     }
 
 
     public class TestAPI : IAPI
     {
-        private string APIKey;
-
-        public TestAPI(string API)
-        {
-            APIKey = API;
-        }
-
-        public string GenerateUrl(string rec, string send, string msg)
+        public string ApiKey { set; private get; } = "";
+    
+        public string GenerateUrl(string receiver, string sender, string msg)
         {
             return "http://107.161.168.149/test/";
  
