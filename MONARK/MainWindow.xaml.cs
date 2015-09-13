@@ -96,13 +96,18 @@ namespace MONARK
             if (result == true)
             {
                 ApiLoc = dlg.FileName;
-                ApiLoaded = true;
-                Send.IsEnabled = true;
+                var reader = new StreamReader(File.OpenRead(@ApiLoc));
+                ApiKey = reader.ReadLine();
+                if (ApiKey.Length == 16)
+                {
+                    ApiLoaded = true;
+                    Send.IsEnabled = true;
+                    API.Content = "API Key loaded";
+                }
+                else MessageBox.Show("Wrong API-key");
             }
 
-            var reader = new StreamReader(File.OpenRead(@ApiLoc));
-            ApiKey = reader.ReadLine();
-            API.Content = "API Key loaded";
+          
         }
 
 
