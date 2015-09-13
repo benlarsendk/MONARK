@@ -121,8 +121,8 @@ namespace MONARK
             else
             {
                 // R S M
-                var SS = new SingleSend();
-                if (SS.Send(RecBox.Text, SenBox.Text, MsgBox.Text, ApiKey))
+                var SS = new SingleSend(new SMSIT(ApiKey));
+                if (SS.Send(RecBox.Text, SenBox.Text, MsgBox.Text))
                 {
                     MessageBox.Show("Success!");
                     MsgBox.Text = "Message...";
