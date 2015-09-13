@@ -6,7 +6,7 @@ namespace MONARK
 {
     internal class MultiSend : ISend
     {
-        private string[] receivers;
+        private List<string> receivers;
         private IAPI api;
 
         public MultiSend(IAPI api)
@@ -17,7 +17,7 @@ namespace MONARK
 
         public bool Send(string receiverListLocation, string sender, string msg)
         {
-            receivers = receiver.Split(';');
+            receivers = ReadCsvList(receiverListLocation);
 
             foreach (var person in receivers)
             {
@@ -40,16 +40,16 @@ namespace MONARK
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
-                if (IsDigitsOnly(line) && line.Length == 8)
+                if (line.Length == 8)
                 {
-                    Recievers.Add(line);
+                    receivers.Add(line);
                 }
                 else
                 {
                     MessageBox.Show("Number is not didgits or not a valid number ( 8 ciffers)");
                 }
             }
-            return Recievers;
+            return receivers;
         }
     }
 }
