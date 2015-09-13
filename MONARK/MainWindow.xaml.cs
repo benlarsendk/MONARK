@@ -15,6 +15,7 @@ namespace MONARK
         private bool ApiLoaded;
         private bool CsvLoaded;
         private string csvLocation;
+        private IAPI api;
 
         public MainWindow()
         {
@@ -27,6 +28,9 @@ namespace MONARK
             CsvLoaded = false;
             ApiLoaded = false;
             Send.IsEnabled = false;
+
+            // Choose the API to use
+            api = new SMSIT();
         }
 
 
@@ -93,6 +97,8 @@ namespace MONARK
                     API.Content = "API Key loaded";
                 }
                 else MessageBox.Show("Wrong API-key");
+
+                api.ApiKey = ApiKey;
             }
         }
 
@@ -103,7 +109,7 @@ namespace MONARK
             {
                 if (csvLocation != null)
                 {
-                    var MS = new MultiSend(csvLocation, ApiKey);
+                    var MS = new MultiSend(api);
                     if (MS.Send(SenBox.Text, MsgBox.Text))
                     {
                         MessageBox.Show("Success!");
@@ -121,7 +127,7 @@ namespace MONARK
             else
             {
                 // R S M
-                var SS = new SingleSend(new SMSIT(ApiKey));
+                var SS = new SingleSend(api);
                 if (SS.Send(RecBox.Text, SenBox.Text, MsgBox.Text))
                 {
                     MessageBox.Show("Success!");
