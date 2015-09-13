@@ -20,6 +20,7 @@ namespace MONARK
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool CsvLoaded = true;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,9 +35,13 @@ namespace MONARK
 
         private void RetGotFocus(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            tb.Text = string.Empty;
-            tb.GotFocus -= RetGotFocus;
+            if (!CsvLoaded)
+            {
+                TextBox tb = (TextBox)sender;
+                tb.Text = string.Empty;
+                tb.GotFocus -= RetGotFocus;
+            }
+
         }
 
         private void MsgGotFocus(object sender, RoutedEventArgs e)
@@ -48,16 +53,19 @@ namespace MONARK
 
         private void Load_Click(object sender, RoutedEventArgs e)
         {
+            string filename = "CSV Not loaded.";
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".csv";
             dlg.Filter = "CSV Files (*.csv)|*.csv";
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
-                // Open document 
-                string filename = dlg.FileName;
-                CsvLoad.Content = "CSV Loaded: " + filename;
+                filename = dlg.FileName;
+                RecBox.Text="CSV Loaded...";
+                RecBox.Background = Brushes.WhiteSmoke;
+                RecBox.IsReadOnly = true;
             }
+            CsvLoad.Content = "CSV Loaded: " + filename;
 
         }
     }
