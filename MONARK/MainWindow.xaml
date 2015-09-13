@@ -10,18 +10,26 @@
     <Grid Background="White">
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="517">
             <MenuItem Header="_File">
-                <MenuItem Header ="Load API KEY"
-                          x:Name="LoadApi" Click="LoadApi_Click"></MenuItem>
-                <MenuItem Header ="Exit"></MenuItem>
+                <MenuItem Header="Load API KEY"
+                          x:Name="LoadApi" Click="LoadApi_Click" />
+                <MenuItem Header="Exit" />
             </MenuItem>
         </Menu>
-        <TextBox x:Name="SenBox" HorizontalAlignment="Left" Height="23" MaxLength="11"  Margin="48,60,0,0" TextWrapping="Wrap" Text="Sender..." VerticalAlignment="Top" Width="174" GotFocus="gotFocus"/>
-        <TextBox x:Name="RecBox" HorizontalAlignment="Left" MaxLength="8"  Height="23" Margin="48,88,0,0" TextWrapping="Wrap" Text="Reciever..." VerticalAlignment="Top" Width="174" GotFocus="RetGotFocus"/>
-        <Button x:Name="Load" Content="Multi" HorizontalAlignment="Left" Margin="227,88,0,0" VerticalAlignment="Top" Height="23" Width="65" BorderBrush="#FFDADADA" Background="WhiteSmoke" Click="Load_Click"/>
-        <TextBox x:Name="MsgBox" MaxLength="918" AcceptsReturn="True" HorizontalAlignment="Left" Height="120" Margin="48,116,0,0" TextWrapping="Wrap" Text="Message..." VerticalAlignment="Top" Width="244" GotFocus="MsgGotFocus"/>
-        <Button x:Name="Send" Content="Send" HorizontalAlignment="Left" Margin="48,241,0,0" VerticalAlignment="Top" Width="82" BorderBrush="#FFDADADA" Background="WhiteSmoke" Click="Send_Click"/>
-        <Label x:Name="CsvLoad" Content="" HorizontalAlignment="Left" Margin="48,266,0,0" VerticalAlignment="Top" Width="244" FontSize="8"/>
-        <Label x:Name="API" Content="API not loaded." HorizontalAlignment="Left" Margin="143,240,0,0" VerticalAlignment="Top" Width="138"/>
+        <TextBox x:Name="SenBox" HorizontalAlignment="Left" Height="23" MaxLength="11" Margin="48,60,0,0"
+                 TextWrapping="Wrap" Text="Sender..." VerticalAlignment="Top" Width="174" GotFocus="gotFocus" />
+        <TextBox x:Name="RecBox" HorizontalAlignment="Left" MaxLength="8" Height="23" Margin="48,88,0,0"
+                 TextWrapping="Wrap" Text="Reciever..." VerticalAlignment="Top" Width="174" GotFocus="RetGotFocus" />
+        <Button x:Name="Load" Content="Multi" HorizontalAlignment="Left" Margin="227,88,0,0" VerticalAlignment="Top"
+                Height="23" Width="65" BorderBrush="#FFDADADA" Background="WhiteSmoke" Click="Load_Click" />
+        <TextBox x:Name="MsgBox" MaxLength="918" AcceptsReturn="True" HorizontalAlignment="Left" Height="120"
+                 Margin="48,116,0,0" TextWrapping="Wrap" Text="Message..." VerticalAlignment="Top" Width="244"
+                 GotFocus="MsgGotFocus" />
+        <Button x:Name="Send" Content="Send" HorizontalAlignment="Left" Margin="48,241,0,0" VerticalAlignment="Top"
+                Width="82" BorderBrush="#FFDADADA" Background="WhiteSmoke" Click="Send_Click" />
+        <Label x:Name="CsvLoad" Content="" HorizontalAlignment="Left" Margin="48,266,0,0" VerticalAlignment="Top"
+               Width="244" FontSize="8" />
+        <Label x:Name="API" Content="API not loaded." HorizontalAlignment="Left" Margin="143,240,0,0"
+               VerticalAlignment="Top" Width="138" />
 
 
     </Grid>

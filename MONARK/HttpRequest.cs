@@ -1,26 +1,15 @@
-﻿using mshtml;
-using SHDocVw;
-using System;
-using System.IO;
+﻿using System.IO;
 using System.Net;
-using System.Text.RegularExpressions;
 
 namespace MONARK
 {
-    class HttpRequest
+    internal class HttpRequest
     {
-
-
-        public HttpRequest()
-        {
-        }
-
         public string GrabData(string url)
         {
-
-            System.Net.WebRequest req = System.Net.WebRequest.Create(url);
-            System.Net.WebResponse resp = req.GetResponse();
-            System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
+            var req = WebRequest.Create(url);
+            var resp = req.GetResponse();
+            var sr = new StreamReader(resp.GetResponseStream());
             return sr.ReadToEnd().Trim();
         }
     }
