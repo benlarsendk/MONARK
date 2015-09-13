@@ -20,10 +20,16 @@ namespace MONARK
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool CsvLoaded = true;
+        private bool CsvLoaded;
         public MainWindow()
         {
             InitializeComponent();
+            this.Loaded += new RoutedEventHandler(MainWindow_Loaded);
+        }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            CsvLoaded = false;
         }
 
         private void gotFocus(object sender, RoutedEventArgs e)
@@ -64,9 +70,25 @@ namespace MONARK
                 RecBox.Text="CSV Loaded...";
                 RecBox.Background = Brushes.WhiteSmoke;
                 RecBox.IsReadOnly = true;
+                CsvLoaded = true;
             }
             CsvLoad.Content = "CSV Loaded: " + filename;
 
+        }
+
+        private void Send_Click(object sender, RoutedEventArgs e)
+        {
+            if (CsvLoaded == true)
+            {
+                //Do stuff
+               
+            }
+            else
+            {
+                // R S M
+                SingleSend SS = new SingleSend();
+                SS.Send(RecBox.Text, SenBox.Text, MsgBox.Text);
+            }
         }
     }
 }
