@@ -13,7 +13,7 @@ namespace MONARK
         {
             if (!IsDigitsOnly(reciever) || sender == null || msg == null)
             {
-                // New window
+                System.Windows.MessageBox.Show("Number is not valid");
                 return false;
             }
             else
@@ -24,7 +24,7 @@ namespace MONARK
 
                 if (ret != "0")
                 {
-                    // Return error
+                    System.Windows.MessageBox.Show("Server returned: " + ret);
                 }
                 return true;
             }

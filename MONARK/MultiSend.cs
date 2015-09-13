@@ -28,7 +28,7 @@ namespace MONARK
 
                 if (ret != "0")
                 {
-                    // Return error
+                    System.Windows.MessageBox.Show("Server returned: " + ret); 
                 }
             }
             return true;
@@ -47,7 +47,7 @@ namespace MONARK
                 }
                 else
                 {
-                    // Throw errorcode-
+                    System.Windows.MessageBox.Show("Number is not didgits or not a valid number ( 8 ciffers)" );
                 }
                 
                 
