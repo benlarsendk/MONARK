@@ -11,18 +11,20 @@ namespace MONARK
     class MultiSend
     {
         private List<string> Recievers;
+        private string api;
 
-        public MultiSend(string resCsv)
+        public MultiSend(string resCsv, string apikey)
         {
+            api = apikey;
             Recievers = new List<string>();
             ReadCsvList(resCsv);
         } 
 
-        public bool Send(List<String> res, string sender, string msg)
+        public bool Send(string sender, string msg)
         {
             foreach (var number in Recievers)
             {
-                string urlToApi = "...";
+                string urlToApi = "http://www.smsit.dk/api/sendSms.php?apiKey=" + api + "&charset=UTF-8&senderId=" + sender + "&mobile=45" + number + "&message=" + msg;
                 HttpRequest HTTP = new HttpRequest();
                 string ret = HTTP.GrabData(urlToApi);
 

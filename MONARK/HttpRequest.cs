@@ -9,11 +9,10 @@ namespace MONARK
 {
     class HttpRequest
     {
-        private readonly InternetExplorer IE;
+
 
         public HttpRequest()
         {
-            IE.Visible = false;
         }
 
         public string GrabData(string url)

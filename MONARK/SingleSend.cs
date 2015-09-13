@@ -9,7 +9,7 @@ namespace MONARK
     class SingleSend
     {
         private string UrlToApi;
-        public bool Send(string reciever, string sender, string msg)
+        public bool Send(string reciever, string sender, string msg, string api)
         {
             if (!IsDigitsOnly(reciever) || sender == null || msg == null)
             {
@@ -18,8 +18,9 @@ namespace MONARK
             }
             else
             {
-                UrlToApi = "...."; // Not implemented
+                UrlToApi = "http://www.smsit.dk/api/sendSms.php?apiKey="+ api +"&charset=UTF-8&senderId=" + sender + "&mobile=45" + reciever + "&message=" + msg;
                 HttpRequest HTTP = new HttpRequest();
+
                 string ret = HTTP.GrabData(UrlToApi);
 
                 if (ret != "0")

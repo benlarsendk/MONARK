@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace MONARK
     public partial class MainWindow : Window
     {
         private bool CsvLoaded;
+        private bool ApiLoaded;
+        private string ApiKey;
         private string csvLocation;
 
         public MainWindow()
@@ -32,7 +35,11 @@ namespace MONARK
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             CsvLoaded = false;
+            ApiLoaded = false;
+            Send.IsEnabled = false;
         }
+
+
 
         private void gotFocus(object sender, RoutedEventArgs e)
         {
@@ -79,20 +86,60 @@ namespace MONARK
 
         }
 
+        private void LoadApi_Click(object sender, RoutedEventArgs e)
+        {
+            string ApiLoc = "";
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".mapi";
+            dlg.Filter = "MAPI Files (*.mapi)|*.mapi";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                ApiLoc = dlg.FileName;
+                ApiLoaded = true;
+                Send.IsEnabled = true;
+            }
+
+            var reader = new StreamReader(File.OpenRead(@ApiLoc));
+            ApiKey = reader.ReadLine();
+            API.Content = "API Key loaded";
+        }
+
+
         private void Send_Click(object sender, RoutedEventArgs e)
         {
             if (CsvLoaded == true)
             {
                 if (csvLocation != null)
                 {
-                    MultiSend MS = new MultiSend(csvLocation);
+                    MultiSend MS = new MultiSend(csvLocation,ApiKey);
+                    if (MS.Send(SenBox.Text, MsgBox.Text))
+                    {
+                        MessageBox.Show("Success!");
+                        MsgBox.Text = "Message...";
+                        RecBox.Text = "Reciever...";
+                        SenBox.Text = "Sender...";
+                        csvLocation = "";
+                        RecBox.Text = "CSV Not loaded";
+                        RecBox.Background = Brushes.White;
+                        RecBox.IsReadOnly = false;
+                        CsvLoaded = false;
+
+                    }
                 }
             }
             else
             {
                 // R S M
                 SingleSend SS = new SingleSend();
-                SS.Send(RecBox.Text, SenBox.Text, MsgBox.Text);
+                if (SS.Send(RecBox.Text, SenBox.Text, MsgBox.Text, ApiKey))
+                {
+                    MessageBox.Show("Success!");
+                    MsgBox.Text = "Message...";
+                    RecBox.Text = "Reciever...";
+                    SenBox.Text = "Sender...";
+
+                }
             }
         }
     }
