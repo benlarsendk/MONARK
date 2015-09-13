@@ -47,6 +47,7 @@ namespace MONARK
             }
         }
 
+
         private void MsgGotFocus(object sender, RoutedEventArgs e)
         {
             var tb = (TextBox) sender;
@@ -128,6 +129,15 @@ namespace MONARK
                     RecBox.Text = "Reciever...";
                     SenBox.Text = "Sender...";
                 }
+            }
+        }
+
+        private void isDidgit(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+
             }
         }
     }
