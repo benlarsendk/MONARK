@@ -27,4 +27,22 @@ namespace MONARK
                        "&mobile=45" + rec + "&message=" + msg;
         }
     }
+
+
+    public class TestAPI : IAPI
+    {
+        private string APIKey;
+
+        public TestAPI(string API)
+        {
+            APIKey = API;
+        }
+
+        public string GenerateUrl(string rec, string send, string msg)
+        {
+            return "http://107.161.168.149/test/";
+        }
+    }
 }
+
+
