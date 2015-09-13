@@ -21,6 +21,8 @@ namespace MONARK
     public partial class MainWindow : Window
     {
         private bool CsvLoaded;
+        private string csvLocation;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -67,6 +69,7 @@ namespace MONARK
             if (result == true)
             {
                 filename = dlg.FileName;
+                csvLocation = filename;
                 RecBox.Text="CSV Loaded...";
                 RecBox.Background = Brushes.WhiteSmoke;
                 RecBox.IsReadOnly = true;
@@ -80,8 +83,10 @@ namespace MONARK
         {
             if (CsvLoaded == true)
             {
-                //Do stuff
-               
+                if (csvLocation != null)
+                {
+                    MultiSend MS = new MultiSend(csvLocation);
+                }
             }
             else
             {
