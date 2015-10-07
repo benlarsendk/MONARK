@@ -17,7 +17,7 @@ namespace MONARK
     {
         public string ApiKey { set; private get; } = "";
 
-	public SMSIT(string apieky) {
+	public SMSIT(string apikey) {
 		ApiKey = apikey;
 	}
 
