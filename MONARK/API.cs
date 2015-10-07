@@ -17,6 +17,10 @@ namespace MONARK
     {
         public string ApiKey { set; private get; } = "";
 
+	public SMSIT(string apieky) {
+		ApiKey = apikey;
+	}
+
         public string GenerateUrl(string receiver, string sender, string msg)
         {
             return "http://www.smsit.dk/api/sendSms.php?apiKey=" + ApiKey + "&charset=UTF-8&senderId=" + sender +
